@@ -1,0 +1,12 @@
+.navbar-light .navbar-nav .nav-link {
+  	color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  	color: #fff;
+  	border-bottom: 2px solid orange;
+}
+
+.card {
+	margin: 30px 0px 30px 0px;
+}
