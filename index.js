@@ -21,7 +21,7 @@ connection
     console.error(error);
   });
 
-// Adicionando meu modelo Pergunta para o Node.
+// Adicionando meu  para o Node.
 const Pergunta = require('./database/Pergunta');
 
 // Adicionando meu modelo Resposta para o Node.
@@ -59,6 +59,33 @@ app.post('/salvar', (req, res) => {
     }).catch((error) => {
       console.error(`Ocorreu um erro, ao salvar sua pergunta -  ${error}`);
     });
+});
+
+app.get('/:id/responder', (req, res) => {
+  const {id} = req.params;
+  Pergunta.findAll({
+    raw: true, 
+    where: {id: id}
+  }).then((pergunta) => {
+    console.log(pergunta)
+    res.render('responder', {
+      pergunta: pergunta
+    });
+  });
+});
+
+app.post('/resposta', (req, res) => {
+  let respostaCorpo = req.body.respostaCorpo;
+  console.log(`Dados do formulario salvo: idPergunta:  Resposta: ${respostaCorpo}`);
+// insert into Resposta values ('idPergunta', 'respostaCorpo');
+
+  Resposta.create({ 
+    respostaCorpo: respostaCorpo
+  }).then(() => {
+    res.redirect('/');
+  }).catch((error) => {
+    console.error(`Ocorreu um erro, ao salvar sua resposta -  ${error}`);
+  });
 });
 
 app.listen(9000, (erro) => {

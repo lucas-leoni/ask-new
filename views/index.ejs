@@ -11,10 +11,10 @@
     <div class="card">
       <div class="card-body">
         <h6>ID Pergunta: <%= pergunta.id %> </h6>
-		<h3><%= pergunta.title %> </h3>
+		    <h3><%= pergunta.title %> </h3>
       </div>
       <div class="card-footer">
-        <a href="/responder" class="btn btn-primary">Responder</a>
+        <a href="<%= pergunta.id %>/responder" class="btn btn-primary">Responder</a>
       </div>
     </div>   
   <% }); %>

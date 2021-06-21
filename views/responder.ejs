@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include('./partials/header.ejs') %>
+<body>
+<%- include('./partials/navbar.ejs') %>
+
+<div class="container">
+  <h1>Responder Tópico</h1>
+
+  <form action="/resposta" method="POST">
+		<div class="card">
+			<div class="card-header">
+				<% pergunta.forEach(pergunta => { %>
+					<h6>ID Pergunta: <%= pergunta.id %> </h6>
+					<h3> <%= pergunta.title %> </h3>
+					<h5> <%= pergunta.description %> </h5>
+				<% }); %>
+			</div>
+		</div>
+    <div class="form-group">
+      <label for="topicDescription"><h6>Resposta</h6></label>
+			<textarea 
+          class="form-control" 
+          id="topicDescription"
+          cols="30"
+          name="respostaCorpo"
+          rows="10"
+          placeholder="Insira sua resposta">
+      </textarea>
+    </div>
+    <button 
+      type="submit" 
+      class="btn btn-primary">Salvar
+    </button>
+  </form>
+</div>
+  
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>
